@@ -104,7 +104,8 @@ $(".number").on("click", function() {
 $(".operator").on("click", function() { 
 
   $("#operator").html(this.value);
-
+  
+  lastOperator = $("#operator").text();
   if (whichNumber === 1) {
     lastNumber="";
     whichNumber=2;
@@ -116,7 +117,32 @@ $(".equal").on("click", function() {
 
   var firstNumber = parseInt($("#first-number").text());
   var secondNumber = parseInt($("#second-number").text());  
-  $("#result").text(firstNumber + secondNumber);
+  var result=0;
+
+  switch (lastOperator) {
+    case "plus":
+      result = firstNumber + secondNumber;
+      break;
+    
+    case "minus":
+      result = firstNumber - secondNumber;
+      break;
+    
+    case "times":
+      result = firstNumber * secondNumber;
+      break;
+    
+    case "divide":
+      result = firstNumber / secondNumber;
+      break;
+
+    case "power":
+      result = firstNumber ** secondNumber;
+      break;
+  }
+
+console.log(result);
+  $("#result").text(result);
 
 });
 
