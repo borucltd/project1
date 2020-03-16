@@ -78,9 +78,65 @@
 $(document).ready(function() {
 
 // Your code here...
+// global variable
+
+// =========================================== //
+
+var lastNumber="";
+var lastOperator="";
+var result;
+var whichNumber=1;
+
+
+$(".number").on("click", function() {
+
+  lastNumber = lastNumber + this.value;
+
+  if (whichNumber === 1) {
+    $("#first-number").text(lastNumber);
+  } else {
+    $("#second-number").text(lastNumber);
+  }
+  
+});
+
+
+$(".operator").on("click", function() { 
+
+  $("#operator").html(this.value);
+
+  if (whichNumber === 1) {
+    lastNumber="";
+    whichNumber=2;
+  }
+  
+});
+
+$(".equal").on("click", function() {
+
+  var firstNumber = parseInt($("#first-number").text());
+  var secondNumber = parseInt($("#second-number").text());  
+  $("#result").text(firstNumber + secondNumber);
+
+});
+
+
+
+
+
+
+
 
 
 });
+
+
+
+
+
+
+
+
 
 </script>
 
